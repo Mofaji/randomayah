@@ -73,7 +73,12 @@ async function updateAyat() {
             getRandomAyat()
         ]);
 
-        document.body.style.backgroundImage = `url('${background}')`;
+        document.body.style.background = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${background}')`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundAttachment = 'fixed';
+        
         document.getElementById('arabic').textContent = ayat.arabic;
         document.getElementById('transcription').textContent = ayat.transcription;
         document.getElementById('translation').textContent = ayat.translation;
@@ -86,8 +91,11 @@ async function updateAyat() {
 async function downloadImage() {
     const buttonContainer = document.querySelector('.button-container');
     buttonContainer.style.display = 'none';
-    
+
     try {
+        // Ensure Arabic font is loaded
+        await document.fonts.load('16px "Amiri"');
+
         const element = document.body;
         const canvas = await html2canvas(element, {
             scale: 2,
@@ -98,20 +106,34 @@ async function downloadImage() {
             width: window.innerWidth,
             height: window.innerHeight,
             windowWidth: window.innerWidth,
-            windowHeight: window.innerHeight
+            windowHeight: window.innerHeight,
+            onclone: function (clonedDoc) {
+                const arabicText = clonedDoc.querySelector('.arabic');
+                if (arabicText) {
+                    arabicText.style.fontFamily = 'Amiri, serif';
+                    arabicText.style.direction = 'rtl';
+                    arabicText.style.textAlign = 'center';
+                    arabicText.style.letterSpacing = '0'; // Ensure no letter separation
+                }
+            },
         });
-        
+
         buttonContainer.style.display = 'flex';
-        
+
         // Convert to blob for better quality
-        canvas.toBlob((blob) => {
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.download = 'quran-ayat.png';
-            link.href = url;
-            link.click();
-            URL.revokeObjectURL(url);
-        }, 'image/png', 1.0);
+        canvas.toBlob(
+            (blob) => {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+                link.download = `quran-ayat-${timestamp}.png`;
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            },
+            'image/png',
+            1.0
+        );
     } catch (error) {
         console.error('Error generating image:', error);
         buttonContainer.style.display = 'flex';

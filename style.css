@@ -1,79 +1,129 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-size: cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://api.unsplash.com/photos/random?query=nature,landscape,mountains&client_id=oZQma7v_znVRCBBdlJt5jwPwuyt2O4DfYHL350hq_rA');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
 }
 
 .container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ayat-box {
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 95vw;
+    width: 900px;
+    box-sizing: border-box;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.ayat-box img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .arabic {
-    font-size: 36px;
+    font-size: 2.8rem;
+    margin-bottom: 0.1rem;
+    font-family: 'Amiri', serif;
+    direction: rtl;
+    letter-spacing: 1px;
     font-weight: bold;
-    margin-bottom: 15px;
-    line-height: 1.5;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 1px 0 #fff2;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+   
 }
 
 .transcription {
-    font-size: 22px;
-    color: #555;
-    margin-bottom: 15px;
+    font-size: 1.5rem;
+    margin-bottom: 0.1rem;
+    font-style: italic;
+    color: #f5f4f4;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    
 }
 
 .translation {
-    font-size: 26px;
-    margin-bottom: 15px;
-    line-height: 1.4;
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    
 }
 
 .info {
-    font-size: 14px;
-    color: #000;
-    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-family: 'Constantia', sans-serif;
+    color: #ffffff;
+    margin-top: 1.2rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    overflow-wrap: break-word;
 }
 
 .button-container {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    gap: 1.5rem;
+    margin-top: 0.8rem;
 }
 
-#downloadBtn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #28a745;
-    color: white;
+button {
+    background: #222;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    padding: 1rem 2.2rem;
+    font-size: 1.15rem;
+    font-weight: 600;
     cursor: pointer;
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18), 0 1.5px 0 #fff1;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 
-#downloadBtn:hover {
-    background-color: #218838;
-}
-
-#refresh {
-    margin-right: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#refresh:hover {
-    background-color: #0056b3;
+button:hover {
+    background: #444;
+    box-shadow: 0 6px 32px 0 rgba(0,0,0,0.28);
+    transform: translateY(-2px) scale(1.04);
 }
