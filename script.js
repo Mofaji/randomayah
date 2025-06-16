@@ -1,6 +1,6 @@
 async function getRandomBackground() {
     try {
-        const response = await fetch('https://api.unsplash.com/photos/random?query=nature,landscape,mountains&client_id=oZQma7v_znVRCBBdlJt5jwPwuyt2O4DfYHL350hq_rA');
+        const response = await fetch('https://api.unsplash.com/photos/random?query=nature,landscape,mountains&client_id=M8SrJtwCWy3CpwLZNEQzGz_gM98f1J3J1LRpYgnL1tM');
         const data = await response.json();
         return data.urls.regular;
     } catch (error) {

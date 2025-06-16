@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://api.unsplash.com/photos/random?query=nature,landscape,mountains&client_id=oZQma7v_znVRCBBdlJt5jwPwuyt2O4DfYHL350hq_rA');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://api.unsplash.com/photos/random?query=nature,landscape,mountains&client_id=M8SrJtwCWy3CpwLZNEQzGz_gM98f1J3J1LRpYgnL1tM');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -126,4 +126,73 @@ button:hover {
     background: #444;
     box-shadow: 0 6px 32px 0 rgba(0,0,0,0.28);
     transform: translateY(-2px) scale(1.04);
+}
+
+/* Responsive styles for mobile devices */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .ayat-box {
+        padding: 2rem 1.5rem;
+        width: 90vw;
+    }
+
+    .arabic {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .transcription {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .translation {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .info {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        white-space: pre-wrap;
+    }
+
+    .button-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ayat-box {
+        padding: 1.5rem 1rem;
+    }
+
+    .arabic {
+        font-size: 1.5rem;
+    }
+
+    .translation {
+        font-size: 1.1rem;
+    }
+
+    .info {
+        font-size: 1rem;
+    }
+}
+
+/* Fix body overflow */
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
 }
